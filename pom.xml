@@ -41,7 +41,12 @@
 			<artifactId>ojdbc14</artifactId>
 			<version>1.0</version>
 		</dependency>
-
+		<!-- 阿里druid连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>0.2.23</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>mvnWeb</finalName>
