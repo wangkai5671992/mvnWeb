@@ -19,9 +19,9 @@ public class TestShiro {
 		UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
 		try {
 			subject.login(token);
-			System.out.println("µÇÂ½³É¹¦");
+			System.out.println("ç™»å½•æˆåŠŸ");
 		} catch (Exception e) {
-			System.out.println("µÇÂ½Ê§°Ü");
+			System.out.println("ç™»å½•å¤±è´¥");
 			e.printStackTrace();
 		}
 		subject.logout();

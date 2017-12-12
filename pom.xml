@@ -35,6 +35,13 @@
 			<artifactId>shiro-core</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- Oracle驱动 -->
+		<dependency>
+			<groupId>com.jxd</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>mvnWeb</finalName>
