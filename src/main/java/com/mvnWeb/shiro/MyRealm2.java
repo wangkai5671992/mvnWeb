@@ -13,7 +13,7 @@ public class MyRealm2 implements Realm {
 
 	@Override
 	public String getName() {
-		return "myRealm";
+		return "myRealm2";
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class MyRealm2 implements Realm {
 
 		String userName = (String) token.getPrincipal();
 		String password = new String((char[]) token.getCredentials());
-		if (!"zhang".equals(userName)) {
+		if (!"wang".equals(userName)) {
 			throw new UnknownAccountException();
 		}
 		if (!"123".equals(password)) {

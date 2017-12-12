@@ -15,7 +15,7 @@ public class MyRealm implements Realm {
 	public String getName() {
 		return "myRealm";
 	}
-
+	
 	@Override
 	public boolean supports(AuthenticationToken token) {
 		return token instanceof UsernamePasswordToken;
@@ -29,7 +29,7 @@ public class MyRealm implements Realm {
 		if (!"zhang".equals(userName)) {
 			throw new UnknownAccountException();
 		}
-		if (!"abc".equals(password)) {
+		if (!"123".equals(password)) {
 			throw new IncorrectCredentialsException();
 		}
 		return new SimpleAuthenticationInfo(userName, password, getName());
