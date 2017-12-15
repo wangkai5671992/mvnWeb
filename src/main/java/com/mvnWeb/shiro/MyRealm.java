@@ -15,7 +15,7 @@ public class MyRealm implements Realm {
 	public String getName() {
 		return "myRealm";
 	}
-	
+
 	@Override
 	public boolean supports(AuthenticationToken token) {
 		return token instanceof UsernamePasswordToken;

@@ -4,6 +4,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
@@ -31,6 +32,8 @@ public class TestShiro {
 			System.out.println("登录失败");
 			e.printStackTrace();
 		}
+		Session session = subject.getSession(true);
+		System.out.println(session.getStartTimestamp());
 		subject.logout();
 	}
 }
