@@ -14,4 +14,11 @@ public interface UserMapper {
 	 * @return 用户列表
 	 */
 	List<Sys_user> selectAll();
+	
+	/**
+	 * 查询单个用户
+	 * @param sys_user
+	 * @return
+	 */
+	Sys_user selectOne(Sys_user sys_user);
 }

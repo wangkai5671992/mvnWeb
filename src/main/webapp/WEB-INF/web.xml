@@ -4,20 +4,23 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>Archetype Created Web Application</display-name>
+
+	<!-- Web容器加载顺序ServletContext==>context-param==>listener==>filter==>servlet -->
+	
+	<!-- 指定配置文件路径 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:spring*.xml</param-value>
+	</context-param>
+	
 	<!-- spring监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- spring容器 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:spring*.xml</param-value>
-	</context-param>
-
-	<!-- DispatcherServlet中央控制器(分发器,前端控制器) -->
+	<!-- DispatcherServlet核心控制器(分发器,前端控制器) -->
 	<servlet>
-		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-name>springMvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<!-- contextConfigLocation不是必须的,DispatcherServlet默认加载 WEB-INF/[<servlet-name>值]-servlet.xml -->
@@ -27,11 +30,11 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-name>springMvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 过滤器解决post乱码 -->
+	<!-- 过滤器解决乱码 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -48,7 +51,24 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
+	<!-- shiro过滤器配置 -->
+	<!-- DelegatingFilterProxy通过代理模式将spring 容器中的bean和 filter联系起来 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<async-supported>true</async-supported>
+		<!-- 设置为true表示由servlet容器控制filter的生命周期 -->
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
 	</welcome-file-list>
